@@ -1,0 +1,36 @@
+{
+  "name": "patkub-site",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp default"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootswatch": "^5.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/register": "^7.25.9",
+    "autoprefixer": "^10.4.20",
+    "del": "^8.0.0",
+    "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-minifier-terser": "^7.1.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-postcss": "^10.0.0",
+    "gulp-purgecss": "^7.0.2",
+    "gulp-rev": "^11.0.0",
+    "gulp-rev-rewrite": "^6.0.0",
+    "gulp-sass": "^5.1.0",
+    "merge-stream": "^2.0.0",
+    "ordered-read-streams": "^2.0.0",
+    "sass": "^1.81.0"
+  }
+}
