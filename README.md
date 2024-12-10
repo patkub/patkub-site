@@ -14,4 +14,4 @@ Build site into `dist/` folder
 npm run build
 ```
 
-Open `dist/index.html` in browser.
+In `dist/` folder run `npx http-server` and open link in browser.
