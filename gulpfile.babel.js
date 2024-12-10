@@ -3,7 +3,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
 const gulp = require('gulp');
-import {deleteSync} from "del";
+import { deleteSync } from "del";
 const ordered = require('ordered-read-streams');
 
 // process css
@@ -25,7 +25,7 @@ import revRewrite from 'gulp-rev-rewrite';
  * Clean dist
  */
 gulp.task('clean', (done) => {
-    deleteSync(['dist/**'], {force:true});
+    deleteSync(['dist/**'], { force: true });
     done();
 });
 
@@ -36,8 +36,8 @@ gulp.task('pack-js', () => {
     return gulp.src(['src/assets/js/main.js'])
         .pipe(concat('main.js'))
         .pipe(minify({
-            ext:{
-                min:'.js'
+            ext: {
+                min: '.js'
             },
             noSource: true
         }))
@@ -47,7 +47,7 @@ gulp.task('pack-js', () => {
 /**
  * Minify CSS
  */
-gulp.task('pack-css', () => {    
+gulp.task('pack-css', () => {
     return gulp.src([
         // main css
         'src/assets/scss/main.scss'
@@ -87,6 +87,10 @@ gulp.task('copy-assets', () => {
     return ordered(
         gulp.src("src/robots.txt")
             .pipe(gulp.dest("dist/")),
+        gulp.src(["src/assets/img/**"], {
+            encoding: false
+        })
+            .pipe(gulp.dest("dist/assets/img/"))
     );
 });
 
@@ -96,10 +100,10 @@ gulp.task('copy-assets', () => {
  */
 function revision() {
     return gulp.src('dist/**/*.{css,js}')
-      .pipe(rev())
-      .pipe(gulp.src('dist/**/*.html'))
-      .pipe(revRewrite())
-      .pipe(gulp.dest('dist'));
+        .pipe(rev())
+        .pipe(gulp.src('dist/**/*.html'))
+        .pipe(revRewrite())
+        .pipe(gulp.dest('dist'));
 }
 
 /**
