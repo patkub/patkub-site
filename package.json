@@ -27,6 +27,7 @@
     "gulp-rev": "^11.0.0",
     "gulp-rev-rewrite": "^6.0.0",
     "gulp-sass": "^5.1.0",
+    "gulp-sri-hash": "^2.2.1",
     "merge-stream": "^2.0.0",
     "ordered-read-streams": "^2.0.0",
     "sass": "^1.81.0"

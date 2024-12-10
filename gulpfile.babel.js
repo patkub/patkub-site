@@ -14,6 +14,7 @@ const postcss = require('gulp-postcss');
 
 // process html
 const htmlmin = require('gulp-html-minifier-terser');
+const sriHash = require('gulp-sri-hash');
 
 // static asset revisioning by appending content hash to filenames
 import rev from 'gulp-rev';
@@ -90,6 +91,26 @@ function revision() {
 }
 
 /**
+ * Generate SRI hashes
+ * Note: Do not modify contents of any referenced css- and js-files after the sriHash() task.
+ * Manipulating html files further is perfectly fine.
+ */
+gulp.task('sri-hash', () => {
+    return ordered(
+        gulp.src("dist/index.html")
+            .pipe(sriHash({
+                algo: "sha512"
+            }))
+            .pipe(gulp.dest('dist/')),
+        gulp.src("dist/404.html")
+            .pipe(sriHash({
+                algo: "sha512"
+            }))
+            .pipe(gulp.dest('dist/')),
+    );
+});
+
+/**
  * Run everything
  */
-gulp.task('default', gulp.series('clean', 'pack-css', 'pack-html', 'copy-assets', revision));
+gulp.task('default', gulp.series('clean', 'pack-css', 'pack-html', 'copy-assets', revision, 'sri-hash'));
