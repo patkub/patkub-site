@@ -12,9 +12,7 @@ const purgecss = require('gulp-purgecss');
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
 
-// process js
-const concat = require('gulp-concat');
-const minify = require('gulp-minify');
+// process html
 const htmlmin = require('gulp-html-minifier-terser');
 
 // static asset revisioning by appending content hash to filenames
@@ -27,21 +25,6 @@ import revRewrite from 'gulp-rev-rewrite';
 gulp.task('clean', (done) => {
     deleteSync(['dist/**'], { force: true });
     done();
-});
-
-/**
- * Minify JS
- */
-gulp.task('pack-js', () => {
-    return gulp.src(['src/assets/js/main.js'])
-        .pipe(concat('main.js'))
-        .pipe(minify({
-            ext: {
-                min: '.js'
-            },
-            noSource: true
-        }))
-        .pipe(gulp.dest('dist/assets/js'));
 });
 
 /**
@@ -99,7 +82,7 @@ gulp.task('copy-assets', () => {
  * Allows for automated cache busting
  */
 function revision() {
-    return gulp.src('dist/**/*.{css,js}')
+    return gulp.src('dist/**/*.css')
         .pipe(rev())
         .pipe(gulp.src('dist/**/*.html'))
         .pipe(revRewrite())
@@ -109,4 +92,4 @@ function revision() {
 /**
  * Run everything
  */
-gulp.task('default', gulp.series('clean', 'pack-js', 'pack-css', 'pack-html', 'copy-assets', revision));
+gulp.task('default', gulp.series('clean', 'pack-css', 'pack-html', 'copy-assets', revision));
