@@ -30,7 +30,7 @@ Header name: `Content-Security-Policy`
 
 Value:
 ```
-default-src 'self'; connect-src 'self' https://cloudflareinsights.com; script-src 'self' static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' 'unsafe-inline' fonts.gstatic.com;
+default-src 'self'; connect-src 'self' https://cloudflareinsights.com; script-src 'self' static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' 'unsafe-inline' fonts.gstatic.com; img-src 'self' data:;
 ```
 
 Place at, Select order: First
