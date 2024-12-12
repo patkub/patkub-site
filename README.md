@@ -16,6 +16,14 @@ npm run build
 
 In `dist/` folder run `npx http-server` and open link in browser.
 
+### Dependencies
+
+Update dependencies to latest
+
+```
+npx npm-check-updates -u
+```
+
 ### CSP
 
 Cloudflare Content-Security-Policy header
