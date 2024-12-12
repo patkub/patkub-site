@@ -46,7 +46,11 @@ gulp.task('pack-css', () => {
             ]
         }))
         // add vendor prefixes to rules by Can I Use
-        .pipe(postcss([autoprefixer()]))
+        .pipe(postcss([
+            autoprefixer({
+                browsers: ['last 3 versions']
+            })
+        ]))
         .pipe(gulp.dest('dist/assets/css'));
 });
 
