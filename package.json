@@ -32,5 +32,8 @@
     "npm-check-updates": "^17.1.11",
     "ordered-read-streams": "^2.0.0",
     "sass": "^1.83.0"
-  }
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
 }
