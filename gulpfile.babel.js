@@ -43,7 +43,8 @@ gulp.task('pack-css', () => {
             content: [
                 'src/**/*.html',
                 // 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
-            ]
+            ],
+            variables: true
         }))
         // add vendor prefixes to rules by Can I Use
         .pipe(postcss([
