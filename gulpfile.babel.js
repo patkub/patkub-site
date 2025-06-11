@@ -1,7 +1,3 @@
-// create require() method
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
 const gulp = require('gulp');
 import { deleteSync } from "del";
 const ordered = require('ordered-read-streams');

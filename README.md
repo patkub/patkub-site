@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Node LTS 22.11.0
+Node LTS 22.16.0
 
 Install dependencies
 ```
