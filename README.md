@@ -1,6 +1,6 @@
 # patkub-site
 
-## Getting Started
+### Local Development
 
 Node LTS 22.16.0
 
@@ -9,20 +9,29 @@ Install dependencies
 npm install
 ```
 
-Build site into `dist/` folder
+Start development server and watch for changes in the `src/` directory.
+```
+npm run dev
+```
+
+Open [http://localhost:3000/](http://localhost:3000/) in your browser.
+
+### Deploy to Cloudflare
+
+Deploy a new version of the site to Cloudflare workers.
+
+```
+npm run deploy
+```
+
+### Local Build
+
+Build the site locally into the `dist/` folder.
 ```
 npm run build
 ```
 
-In `dist/` folder run `npx http-server` and open link in browser.
-
-### Dependencies
-
-Update dependencies to latest
-
-```
-npx npm-check-updates -u
-```
+In the `dist/` folder run `npx http-server` and open the link in browser.
 
 ### CSP
 
@@ -42,3 +51,8 @@ default-src 'self'; connect-src 'self' https://cloudflareinsights.com; script-sr
 ```
 
 Place at, Select order: First
+
+### Commands
+- `npm run dev` or `npm start` - start a local server for developing the site
+- `npm run deploy` - deploy the site to Cloudflare
+- `npm run build` - build the site into the `dist/` directory

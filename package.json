@@ -6,7 +6,10 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp default"
+    "build": "gulp default",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +34,8 @@
     "merge-stream": "^2.0.0",
     "npm-check-updates": "^17.1.11",
     "ordered-read-streams": "^2.0.0",
-    "sass": "^1.83.0"
+    "sass": "^1.83.0",
+    "wrangler": "^4.22.0"
   },
   "browserslist": [
     "last 3 versions"
