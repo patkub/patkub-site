@@ -131,3 +131,6 @@ dist
 
 # Apple
 .DS_Store
+
+# Cloudflare
+.wrangler/
