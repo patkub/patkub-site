@@ -34,6 +34,6 @@ describe('404.html', () => {
 
   it('main section contains link to home', () => {
     expect(body.querySelector('main')).not.toBeNull()
-    expect(document.querySelector('[href="/"]')).not.toBeNull()
+    expect(body.querySelector('main [href="/"]')).not.toBeNull()
   })
 })
