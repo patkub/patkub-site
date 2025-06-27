@@ -33,6 +33,27 @@ npm run build
 
 In the `dist/` folder run `npx http-server` and open the link in browser.
 
+### Unit Testing
+
+Unit tests are run with Jest.
+```
+npm test
+```
+
+### Dependencies
+
+Update dependencies to latest
+
+```
+npx npm-check-updates -u
+```
+
+Update browserslist data
+
+```
+npx update-browserslist-db@latest
+```
+
 ### CSP
 
 Cloudflare Content-Security-Policy header
@@ -56,3 +77,4 @@ Place at, Select order: First
 - `npm run dev` or `npm start` - start a local server for developing the site
 - `npm run deploy` - deploy the site to Cloudflare
 - `npm run build` - build the site into the `dist/` directory
+- `npm test` - run unit tests
