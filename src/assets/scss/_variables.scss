@@ -3,8 +3,10 @@
  * Bootswatch theme variables: node_modules/bootswatch/dist/darkly/_variables.scss
  */
 
-// Change Bootswatch theme font to Roboto
+// Change Bootswatch theme font to Roboto and Noto Color Emoji
 // stylelint-disable-next-line value-keyword-case
-$font-family-sans-serif: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// stylelint-disable-next-line value-keyword-case
+$font-family-sans-serif: Roboto, "Noto Color Emoji" !default;
 // prevent bootswatch from importing its own google fonts
 $web-font-path: false;

@@ -10,12 +10,17 @@ section {
     font-size: 1.4rem;
 }
 
-.footer {
-    padding: 30px 0;
-}
-
 @media (max-width: 480px) {
     .content-section {
         font-size: 1rem;
     }
+}
+
+.emoji-font {
+    // Noto Color Emoji has font weight 400
+    font-weight: 400;
+}
+
+.footer {
+    padding: 30px 0;
 }
