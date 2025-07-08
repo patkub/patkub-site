@@ -32,6 +32,11 @@ describe('index.html', () => {
     expect(head.querySelector('meta[name=keywords]')).not.toBeNull()
   })
 
+  it('head section includes fonts', () => {
+    expect(head.querySelector('link[rel=stylesheet][href*="Noto+Color+Emoji:wght@400"]')).not.toBeNull()
+    expect(head.querySelector('link[rel=stylesheet][href*="Roboto:wght@400;500;700"]')).not.toBeNull()
+  })
+
   it('main section contains name', () => {
     expect(body.querySelector('main')).not.toBeNull()
     expect(getByText(body.querySelector('main'), 'Patrick Kubiak')).toBeInTheDocument()

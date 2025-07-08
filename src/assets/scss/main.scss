@@ -1,11 +1,15 @@
 /**
- * Bootswatch Darkly variables
+ * Custom variables
  */
-@import "../../../node_modules/bootswatch/dist/darkly/_variables";
 @import "./_variables";
 
 /**
- * Bootstrap 5.3.3
+ * Bootswatch Darkly variables
+ */
+@import "../../../node_modules/bootswatch/dist/darkly/_variables";
+
+/**
+ * Bootstrap 5.3.7
  */
 // @import "../../../node_modules/bootstrap/scss/bootstrap";
 // @import "../../../node_modules/bootstrap/scss/mixins/banner";

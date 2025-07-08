@@ -4,7 +4,11 @@
  */
 
 // Change Bootswatch theme font to Roboto and Noto Color Emoji
-// stylelint-disable-next-line value-keyword-case
+// stylelint-disable value-keyword-case
 $font-family-sans-serif: Roboto, "Noto Color Emoji" !default;
+$font-family-sans-serif:      $font-family-sans-serif !default;
+$font-family-monospace:       $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
+
 // prevent bootswatch from importing its own google fonts
 $web-font-path: false;

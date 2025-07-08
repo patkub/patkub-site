@@ -32,6 +32,11 @@ describe('404.html', () => {
     expect(head.querySelector('meta[name=keywords]')).not.toBeNull()
   })
 
+  it('head section includes fonts', () => {
+    expect(head.querySelector('link[rel=stylesheet][href*="Noto+Color+Emoji:wght@400"]')).not.toBeNull()
+    expect(head.querySelector('link[rel=stylesheet][href*="Roboto:wght@400;500;700"]')).not.toBeNull()
+  })
+
   it('main section contains link to home', () => {
     expect(body.querySelector('main')).not.toBeNull()
     expect(body.querySelector('main [href="/"]')).not.toBeNull()
