@@ -33,7 +33,14 @@ gulp.task('pack-css', () => {
         'src/assets/scss/main.scss'
     ])
         // compile sass to css
-        .pipe(sass({ style: 'compressed' }))
+        .pipe(sass({
+            style: 'compressed',
+            silenceDeprecations: [
+                'color-functions',
+                'global-builtin',
+                'import'
+            ],
+        }))
         // remove unused css
         .pipe(purgecss({
             content: [
