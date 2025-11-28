@@ -2,16 +2,12 @@
  * Custom styles
  */
 
-section {
+section, footer {
     padding: 30px 0;
 }
 
 .content-section {
     font-size: 1.4rem;
-}
-
-.footer {
-    padding: 30px 0;
 }
 
 @media (max-width: 480px) {
