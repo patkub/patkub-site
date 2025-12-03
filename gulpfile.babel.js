@@ -62,10 +62,16 @@ gulp.task('pack-css', () => {
 gulp.task('pack-html', () => {
     return ordered(
         gulp.src("src/index.html")
-            .pipe(htmlmin({ collapseWhitespace: true }))
+            .pipe(htmlmin({
+                collapseWhitespace: true,
+                removeComments: true,
+            }))
             .pipe(gulp.dest('dist/')),
         gulp.src("src/404.html")
-            .pipe(htmlmin({ collapseWhitespace: true }))
+            .pipe(htmlmin({
+                collapseWhitespace: true,
+                removeComments: true,
+            }))
             .pipe(gulp.dest('dist/')),
     );
 });
