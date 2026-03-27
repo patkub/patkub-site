@@ -2,7 +2,7 @@
 
 ### Local Development
 
-Node LTS 24.13.1
+Node LTS 24.14.1
 
 Install dependencies
 ```
