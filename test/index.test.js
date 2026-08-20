@@ -30,6 +30,11 @@ describe('index.html', () => {
     expect(head.querySelector('meta[name=viewport]')).not.toBeNull()
     expect(head.querySelector('meta[name=description]')).not.toBeNull()
     expect(head.querySelector('meta[name=keywords]')).not.toBeNull()
+
+    // Open Graph Tags
+    expect(head.querySelector('meta[property="og:title"]')).not.toBeNull()
+    expect(head.querySelector('meta[property="og:description"]')).not.toBeNull()
+    expect(head.querySelector('meta[property="og:url"]')).not.toBeNull()
   })
 
   it('main section contains name', () => {
