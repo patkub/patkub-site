@@ -1,39 +1,31 @@
-import { JSDOM } from 'jsdom'
-import { getByText } from '@testing-library/dom'
-
-import fs from 'fs'
+import { test, expect } from '@playwright/test'
+import { pathToFileURL } from 'url'
 import path from 'path'
 
-const html = fs.readFileSync(path.resolve(__dirname, '../src/404.html'), 'utf8')
+const notFoundUrl = pathToFileURL(path.resolve('src/404.html')).href
 
-let dom
-let document, body, head
-
-describe('404.html', () => {
-  beforeEach(() => {
-    dom = new JSDOM(html)
-    document = dom.window.document
-    body = document.body
-    head = document.head
+test.describe('404.html', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(notFoundUrl)
   })
 
-  it('has language set', () => {
-    expect(document.querySelector('html[lang=en]')).not.toBeNull()
+  test('has language set', async ({ page }) => {
+    await expect(page.locator('html[lang="en"]')).toHaveCount(1)
   })
 
-  it('has title set', () => {
-    expect(getByText(head.querySelector('title'), 'patkub - 404 - Not Found')).toBeInTheDocument()
+  test('has title set', async ({ page }) => {
+    await expect(page).toHaveTitle('patkub - 404 - Not Found')
   })
 
-  it('head section defines meta tags', () => {
-    expect(head.querySelector('meta[charset=utf-8]')).not.toBeNull()
-    expect(head.querySelector('meta[name=viewport]')).not.toBeNull()
-    expect(head.querySelector('meta[name=description]')).not.toBeNull()
-    expect(head.querySelector('meta[name=keywords]')).not.toBeNull()
+  test('head section defines meta tags', async ({ page }) => {
+    await expect(page.locator('meta[charset="utf-8"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="viewport"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="description"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="keywords"]')).toHaveCount(1)
   })
 
-  it('main section contains link to home', () => {
-    expect(body.querySelector('main')).not.toBeNull()
-    expect(body.querySelector('main [href="/"]')).not.toBeNull()
+  test('main section contains link to home', async ({ page }) => {
+    await expect(page.locator('main')).toBeVisible()
+    await expect(page.locator('main a[href="/"]')).toHaveCount(1)
   })
 })

@@ -1,49 +1,39 @@
-import { JSDOM } from 'jsdom'
-import { getByText } from '@testing-library/dom'
-
-import fs from 'fs'
+import { test, expect } from '@playwright/test'
+import { pathToFileURL } from 'url'
 import path from 'path'
 
-const html = fs.readFileSync(path.resolve(__dirname, '../src/index.html'), 'utf8')
+const indexUrl = pathToFileURL(path.resolve('src/index.html')).href
 
-let dom
-let document, body, head
-
-describe('index.html', () => {
-  beforeEach(() => {
-    dom = new JSDOM(html)
-    document = dom.window.document
-    body = document.body
-    head = document.head
+test.describe('index.html', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(indexUrl)
   })
 
-  it('has language set', () => {
-    expect(document.querySelector('html[lang=en]')).not.toBeNull()
+  test('has language set', async ({ page }) => {
+    await expect(page.locator('html[lang="en"]')).toHaveCount(1)
   })
 
-  it('has title set', () => {
-    expect(getByText(head.querySelector('title'), 'patkub')).toBeInTheDocument()
+  test('has title set', async ({ page }) => {
+    await expect(page).toHaveTitle(/patkub/)
   })
 
-  it('head section defines meta tags', () => {
-    expect(head.querySelector('meta[charset=utf-8]')).not.toBeNull()
-    expect(head.querySelector('meta[name=viewport]')).not.toBeNull()
-    expect(head.querySelector('meta[name=description]')).not.toBeNull()
-    expect(head.querySelector('meta[name=keywords]')).not.toBeNull()
+  test('head section defines meta tags', async ({ page }) => {
+    await expect(page.locator('meta[charset="utf-8"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="viewport"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="description"]')).toHaveCount(1)
+    await expect(page.locator('meta[name="keywords"]')).toHaveCount(1)
 
     // Open Graph Tags
-    expect(head.querySelector('meta[property="og:title"]')).not.toBeNull()
-    expect(head.querySelector('meta[property="og:description"]')).not.toBeNull()
-    expect(head.querySelector('meta[property="og:url"]')).not.toBeNull()
+    await expect(page.locator('meta[property="og:title"]')).toHaveCount(1)
+    await expect(page.locator('meta[property="og:description"]')).toHaveCount(1)
+    await expect(page.locator('meta[property="og:url"]')).toHaveCount(1)
   })
 
-  it('main section contains name', () => {
-    expect(body.querySelector('main')).not.toBeNull()
-    expect(getByText(body.querySelector('main'), 'Patrick Kubiak')).toBeInTheDocument()
+  test('main section contains name', async ({ page }) => {
+    await expect(page.locator('main')).toContainText('Patrick Kubiak')
   })
 
-  it('footer section contains name', () => {
-    expect(body.querySelector('footer')).not.toBeNull()
-    expect(getByText(body.querySelector('footer'), 'Patrick Kubiak')).toBeInTheDocument()
+  test('footer section contains name', async ({ page }) => {
+    await expect(page.locator('footer')).toContainText('Patrick Kubiak')
   })
 })

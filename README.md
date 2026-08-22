@@ -33,9 +33,9 @@ npm run build
 
 In the `dist/` folder run `npx http-server` and open the link in browser.
 
-### Unit Testing
+### Browser Testing
 
-Unit tests are run with Jest.
+Browser tests are run with Playwright.
 ```
 npm test
 ```
